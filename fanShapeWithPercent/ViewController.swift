@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var fanShapedLineWithPercentView: UIImageView?
     var percentValue: Double = 50.0
     
+    // addSubView
     func addFanShapedView(){
         let fanShapedLineWithPercentLine = DrawFSLineWithPercent()
         fanShapedLineWithPercentView = fanShapedLineWithPercentLine.drawLine(
@@ -42,13 +43,19 @@ class ViewController: UIViewController {
         percentValueLabel.text = String(percentValue) + "%"
         fanShapedLineWithPercentView?.removeFromSuperview()
         addFanShapedView()
+        
+        self.view.layoutIfNeeded()
+        
     }
     
     // レイアウト・制約の変更
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let ASViewCenter: CGPoint = view.convert(percentValueLabel.center, from: backgroungView)
+        let ASViewCenter: CGPoint = view.convert(percentValueLabel.center, from: fanShapedView)
         fanShapedLineWithPercentView?.center = ASViewCenter
+        
+        print("backgroungView.center:",backgroungView.center)
+        print("percentValueLabel.center:",percentValueLabel.center)
     }
     
 
