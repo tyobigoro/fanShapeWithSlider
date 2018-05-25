@@ -33,7 +33,6 @@ class DrawFSLineWithPercent {
         // イメージ処理の開始
         let size = view.bounds.size
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
-        
         let percent = percent
         // 円弧のパスを作る
         lineColor.setStroke() // 青の線にする
@@ -44,12 +43,10 @@ class DrawFSLineWithPercent {
         let tf = CGAffineTransform(translationX: view.center.x, y: view.center.y)
         arcPath.apply(tf)
         arcPath.stroke()
-        
         // イメージテキストからUIImageを作る
         let image = UIGraphicsGetImageFromCurrentImageContext()
         // イメージ処理の終了
         UIGraphicsEndImageContext()
-        
         let imageView = UIImageView(image: image)
         
         return imageView
